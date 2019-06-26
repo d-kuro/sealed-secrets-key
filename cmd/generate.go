@@ -60,6 +60,7 @@ func NewRootCommand(o *GenerateOptions) *cobra.Command {
 		Short:         "Generate sealed-secrets-key",
 		Example:       example,
 		SilenceErrors: true,
+		SilenceUsage:  true,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return run(o)
 		},
