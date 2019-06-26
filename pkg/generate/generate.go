@@ -61,7 +61,7 @@ func signKey(r io.Reader, key *rsa.PrivateKey, keyTTL time.Duration) (*x509.Cert
 }
 
 func createSecret(key *rsa.PrivateKey, certs []*x509.Certificate, namespace, keyName string) (*Secret, error) {
-	var certBytes []byte
+	certBytes := make([]byte, 0, len(certs))
 	for _, cert := range certs {
 		certBytes = append(certBytes, encode.CertPEM(cert)...)
 	}

@@ -92,7 +92,10 @@ func run(o *GenerateOptions) error {
 			return err
 		}
 		defer f.Close()
-		f.Write(out)
+
+		if _, err := f.Write(out); err != nil {
+			return err
+		}
 		return nil
 	}
 
